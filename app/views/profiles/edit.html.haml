@@ -1,0 +1,12 @@
+.container.jumbotron
+  = semantic_form_for @profile, html: { multipart: true } do |f|
+    = f.inputs :first_name, :last_name, :phone
+    = f.file_field :avatar
+    = f.inputs :for => @profile.user do |user|
+      = user.input :email
+      =# select_tag "city_ids[]", region_options_for_select(only_us_and_canada), {}, {:multiple => true, :class => "chzn-select", :style => "width:450px;" }
+    = select_tag "profile[city_ids][]", region_options_for_select(only_us_and_canada), {:multiple => :multiple, :size => 10, :style => "width:450px;" } 
+    = f.submit  
+
+
+
